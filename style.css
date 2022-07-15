@@ -6,9 +6,61 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
+.container{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.window{
+    margin: 20px auto;
+}
+.input-field input[type="text"]{
+    padding: 5px;
+    border: 1px solid #b1b1b1;
+    border-radius: 5px;
+}
+.input-field input[type="text"]:hover{
+    border: 1px solid rgb(44, 44, 44);
+}
+.description{
+    display: inline;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+#input-window{
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+#roll-btn{
+    margin: 0 auto;
+    max-width: 90px;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background-color: #ff6105;
+    transition: .1s;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#roll-btn:hover{
+    background-color: #ff8843;
+}
+
+#roll-btn i{
+    font-size: 1.8em;
+}
+#roll-btn:hover i{
+    animation-duration: 1s;
+    animation-name: roll;
+}
 #diceResult{
     border-radius: 15px;
-    padding: 5px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -18,8 +70,8 @@ body{
 }
 .result-card{
     padding: 10px 0;
-    width: 100%;
-    max-width: 30%;
+    width: 50%;
+    max-width: 33%;
     border-bottom: 1px solid gray;
     display: flex;
     align-items: center;
@@ -69,3 +121,48 @@ body{
     left: 50%;
     transform: translateX(-50%);
 }
+
+@keyframes roll {
+    1% {
+        transform: rotate(0turn);
+    }
+    100%{
+        transform: rotate(1turn);;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .container{
+        width: 100%;
+    }
+    .input-text{
+        display: flex;
+        flex-direction: column;
+    }
+    .input-field{
+        display: flex;
+        flex-grow: 1;
+        align-items: center;
+        justify-content: space-between;
+        margin: 5px 0;
+        border-bottom: 1px solid #b1b1b1;
+        padding: 5px 0;
+    }
+    .input-field input{
+        display: flex;
+        flex-grow: 0;
+        max-width: none;
+    }
+    #description-window{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .description{
+        margin: 0;
+    }
+    .result-card{
+        width: 49%;
+        max-width: none;
+    }
+  }

@@ -1,18 +1,17 @@
-/* 
-RECADO:
-Eu possuo um projeto pessoal que envolve rolagem de dados. 
-Aproveitei a oportunidade para desenvolver um código para o meu projeto pessoal, casando com a Entrega proposta pela Kenzie.
-Coloquei, dentro deste código, todos os parâmetros para cumprir com os requisitos da atividade. Exceto o teste de mesa.
-Por favor, me informe se não for possível realizar uma correção para esta atividade.
-*/
 
-Rolar(1000);
-
-function Rolar(nroDeLançamentos,nroDeDados,nroDeFaces){
-    nroDeDados = nroDeDados || 2;
-    nroDeFaces = nroDeFaces || 6;
-    let resultsArr = rolarPilha(nroDeLançamentos, nroDeDados, nroDeFaces);
-    criarHTML(nroDeLançamentos, resultsArr, nroDeDados);
+empregarEventoBotão();
+Rolar()
+function Rolar(){
+    const $qt_testes = document.getElementById('qt-testes');
+    const $qt_dados = document.getElementById('qt-dados');
+    const $qt_faces = document.getElementById('qt-faces');
+    if ($qt_testes.value != '' && $qt_dados.value != '' && $qt_faces.value != '') {
+        let nroDeLançamentos = parseInt($qt_testes.value || 1000);
+        let nroDeDados = parseInt($qt_dados.value || 2);
+        let nroDeFaces = parseInt($qt_faces.value || 6);
+        let resultsArr = rolarPilha(nroDeLançamentos, nroDeDados, nroDeFaces);
+        criarHTML(nroDeLançamentos, resultsArr, nroDeDados, nroDeFaces);
+    }
 }
 
 function rolarPilha(nroDeLançamentos,nroDeDados,nroDeFaces){
@@ -41,12 +40,18 @@ function criarArrayDeResultadosPossiveis(nro,faces){
     return arr;
 };
 
-function criarHTML(nroDeLançamentos, resultsArr, nroDeDados){
+function criarHTML(nroDeLançamentos, resultsArr, nroDeDados, nroDeFaces){
     const $diceResult = document.getElementById('diceResult');
-    let HTMLData = '';
+    const $descriptionWindow = document.getElementById('description-window');
+    let descriptionHTMLData = `
+        <p class="description">​Dados: ${nroDeDados}</p>
+        <p class="description">Faces: ${nroDeFaces}</p>
+        <p class="description">Quantos testes: ${nroDeLançamentos}</p>
+    `;
+    let resultCardHTMLData = '';
     for (let i = 0; i < resultsArr.length; i++) {
         let porcentagem = calcularPorcentagem(resultsArr[i], nroDeLançamentos);
-        HTMLData += `
+        resultCardHTMLData += `
         <div class="result-card">
             <div class="result-data">
                 <span class="result-title">Ocorrências do valor ${nroDeDados + i}: </span>
@@ -60,9 +65,15 @@ function criarHTML(nroDeLançamentos, resultsArr, nroDeDados){
         </div>
         `        
     }
-    $diceResult.innerHTML = HTMLData;
+    $diceResult.innerHTML = resultCardHTMLData;
+    $descriptionWindow.innerHTML = descriptionHTMLData;
 };
 
 function calcularPorcentagem(valor, total){
     return valor * 100 / total
 };
+
+function empregarEventoBotão(){
+    const $btn = document.getElementById('roll-btn');
+    $btn.addEventListener('click',Rolar)
+}

@@ -5,17 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Rolando dados</title>
+    <script src="https://kit.fontawesome.com/0672e7305c.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>Rolando dados</h1>
-    <div id="description-window">
-        <p>Quantos dados: 2</p>
-        <p>De quantas faces: 6</p>
-        <p>Quantas rolagens: 1000</p>
+    <div class="container">
+        <h1>Rolando dados</h1>
+        <div id="input-window" class="window">
+            <div class="input-text">
+                <label class="input-field">
+                    <span>Dados:</span> 
+                    <input type="text" id="qt-dados" placeholder="Quantos dados?">
+                </label>
+                <label class="input-field">
+                    <span>Faces:</span>
+                    <input type="text" id="qt-faces" placeholder="Quantas faces?">
+                </label>
+                <label class="input-field" >
+                    <span>Quantos testes:</span>
+                    <input type="text" id="qt-testes" placeholder="Recomendado: 1000">
+                </label>
+            </div>
+            <button id="roll-btn"><i class="fa-solid fa-dice-d20"></i></button>
+        </div>
+        <div id="description-window" class="window"></div>
+        <div id="diceResult" class="window"></div>
     </div>
-    <div id="diceResult" >
-
-    </div>
-    <script src="script.js"></script>
+    <script src="rolagem.js"></script>
 </body>
 </html>
