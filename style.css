@@ -1,0 +1,71 @@
+:root{
+    --backWidth: 100%;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+#diceResult{
+    border-radius: 15px;
+    padding: 5px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    max-width: 1000px;
+}
+.result-card{
+    padding: 10px 0;
+    width: 100%;
+    max-width: 30%;
+    border-bottom: 1px solid gray;
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 15px;
+    padding-bottom: 15px;
+}
+.result-data{
+    box-sizing: border-box;
+    overflow: hidden;
+    text-align: start;
+    margin: 5px 0;
+}
+.result-title, .result-value{
+    display: block;
+}
+.result-title{
+    font-size: 0.8em;
+    color: rgb(92, 92, 92);
+}
+.result-value{
+    font-size: 0.9em;
+    font-weight: 600;
+    margin: 5px 0;
+    padding: 2px 0;
+
+}
+.grafico{
+    height: 20px;
+    width: var(--backWidth);
+    background-color: rgb(202, 202, 202);
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    border-radius: 5px;
+}
+.grafico-value{
+    background-color: #2ead92;
+    border-radius: 5px;
+    height: 100%;
+}
+.grafico-value-porc{
+    font-size: 0.8em;
+    color: black;
+    font-weight: 600;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
